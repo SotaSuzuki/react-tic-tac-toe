@@ -8,6 +8,7 @@ var Board = React.createClass({
     renderSquare: function(i) {
         return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
         // (2) ここでは onClick にアロー演算子を使用する。さもなければ無限ループしてしまう。
+        // 2017/03/21 追記: 引数と関係がありそう・・・
     },
 
     render: function() {

@@ -1,11 +1,3 @@
-// Extra TODOs
-// ---------------------------------------------
-// - Display the move locations in the format "(1, 3)" instead of "6".
-// - Bold the currently-selected item in the move list.
-// - Rewrite Board to use two loops to make the squares instead of hardcoding them.
-// - Add a toggle button that lets you sort the moves in either ascending or descending order.
-// - When someone wins, highlight the three squares that caused the win.
-
 var React = require('react');
 var Board = require('./Board');
 
@@ -39,7 +31,7 @@ var Game = React.createClass({
         let current = history[history.length - 1];
         let squares = current.squares.slice();
 
-        // 既に勝者が決まっている場合、またはマスが埋まっている場合に return させる
+        // 既に勝者が決まっている場合、またはマスが埋まっている場合は何も起きない（即 return )
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
@@ -68,14 +60,14 @@ var Game = React.createClass({
             status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
 
-        // 引数の step は item
-        //        move は index
+        // 引数の step は 配列の item
+        //        move は 配列の index
         //
         // const moves = history.map(function(step, move) {
         // NOTE: 上記のように書いた場合 this が上手く動作しないため下記のように記述。ES6 勉強しよう・・・。
         // history.map(() => {}) この形、難しい。
         const moves = history.map((step, move) => {
-            // 初期状態では 'Game Start' が表示される
+            // 初期状態では 'Game Start' を表示させる
             let desc = move ?
                 'Move #' + move :
                 'Game Start';
@@ -101,6 +93,7 @@ var Game = React.createClass({
 });
 
 function calculateWinner(squares) {
+    // 横一列、縦一列、斜め一列をマトリックスで表している
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -114,7 +107,8 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
         let [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            console.log(a, b, c); //TODO: あとで消す
+            // 同じ文字列（Xか0）が並べば、並んだ文字列を返す
+            // 返ったものが勝者
             return squares[a];
         }
     }

@@ -1,6 +1,6 @@
-# Tic Tac Toe
+# react-tic-tac-toe
 
-It is a Tic tac toe game which is made by React. I reffered to [React Official Tutorial](https://facebook.github.io/react/tutorial/tutorial.html) to step into the world of React.
+It is a Tic Tac Toe game which is made with React. I reffered to [React Official Tutorial](https://facebook.github.io/react/tutorial/tutorial.html) to step into the world of React.
 
 ## Installation
 

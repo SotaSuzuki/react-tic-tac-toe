@@ -1,6 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Game = require('./components/Game');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Game from './components/Game';
 
 ReactDOM.render(
     <Game />,

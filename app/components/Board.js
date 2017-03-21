@@ -1,17 +1,17 @@
-var React = require('react');
-var Square = require('./Square');
+import React from 'react';
+import Square from './Square';
 
-var Board = React.createClass({
+export default class Board extends React.Component {
     // NOTE: 注意ポイント
     // (1) 普通の function 構文では index 値が渡せず、上手くいかなかった。（無限ループに陥った）なので、不思議構文を採用している。要調査。
 
-    renderSquare: function(i) {
+    renderSquare(i) {
         return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
         // (2) ここでは onClick にアロー演算子を使用する。さもなければ無限ループしてしまう。
         // 2017/03/21 追記: 引数と関係がありそう・・・
-    },
+    }
 
-    render: function() {
+    render() {
         return (
             <div className="game-board">
                 <div className="row">
@@ -32,6 +32,4 @@ var Board = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = Board;
+}

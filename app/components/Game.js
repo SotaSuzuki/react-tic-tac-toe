@@ -1,9 +1,12 @@
-var React = require('react');
-var Board = require('./Board');
+import React from 'react';
+import Board from './Board';
 
-var Game = React.createClass({
-    getInitialState: function() {
-        return {
+// NOTE: export default を付けると外部ファイルから読み込むことが可能になる
+// module.exports = Hoge; は要らなくなる
+export default class Game extends React.Component {
+    constructor() {
+        super();
+        this.state = {
             history: [
                 {
                     squares: Array(9).fill(null)
@@ -12,14 +15,14 @@ var Game = React.createClass({
             stepNumber: 0,
             xIsNext: true
         };
-    },
+    }
 
     jumpTo(step) {
         this.setState({
             stepNumber: step,
             xIsNext: (step % 2) ? false : true // 偶数番手なら false 、そうでなければ true
         });
-    },
+    }
 
     handleClick(i) {
         // 1. 勝敗が決まった後、やり直しができないモード
@@ -46,9 +49,9 @@ var Game = React.createClass({
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext
         });
-    },
+    }
 
-    render: function() {
+    render () {
         let history = this.state.history;
         let current = history[this.state.stepNumber];
         let winner = calculateWinner(current.squares);
@@ -90,7 +93,7 @@ var Game = React.createClass({
             </div>
         );
     }
-});
+}
 
 function calculateWinner(squares) {
     // 横一列、縦一列、斜め一列をマトリックスで表している
@@ -114,5 +117,3 @@ function calculateWinner(squares) {
     }
     return null;
 }
-
-module.exports = Game;

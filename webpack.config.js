@@ -20,6 +20,9 @@ module.exports = {
         filename: 'transformed.js',
         path: __dirname + '/build'
     },
+    devServer: {
+        port: 3000
+    },
     plugins: [
         HTMLWebpackPluginConfig
     ]

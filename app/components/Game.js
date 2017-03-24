@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Board from './Board';
 
-// NOTE: export default を付けると外部ファイルから読み込むことが可能になる
-// module.exports = Hoge; は要らなくなる
-export default class Game extends React.Component {
+class Game extends Component {
     constructor() {
         super();
         this.state = {
@@ -65,10 +63,8 @@ export default class Game extends React.Component {
 
         // 引数の step は 配列の item
         //        move は 配列の index
-        //
-        // const moves = history.map(function(step, move) {
-        // NOTE: 上記のように書いた場合 this が上手く動作しないため下記のように記述。ES6 勉強しよう・・・。
-        // history.map(() => {}) この形、難しい。
+
+        // () => hoge ... この形は無名関数を作っていることがわかった
         const moves = history.map((step, move) => {
             // 初期状態では 'Game Start' を表示させる
             let desc = move ?
@@ -117,3 +113,5 @@ function calculateWinner(squares) {
     }
     return null;
 }
+
+export default Game;

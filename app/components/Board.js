@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Square from './Square';
 
-export default class Board extends React.Component {
+class Board extends Component {
     // NOTE: 注意ポイント
     // (1) 普通の function 構文では index 値が渡せず、上手くいかなかった。（無限ループに陥った）なので、不思議構文を採用している。要調査。
 
@@ -33,3 +33,5 @@ export default class Board extends React.Component {
         );
     }
 }
+
+export default Board;

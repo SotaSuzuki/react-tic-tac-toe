@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+
+// General
+//----------------------------------------------
+body {
+  padding: 20px;
+  color: #909090;
+  font-family: monospace;
+}
+
+h1 {
+  color: cornflowerblue;
+  font-size: 24px;
+}
+
+
+// Game Board
+//----------------------------------------------
+.game-board {
+  border: 1px solid #909090;
+  display: inline-block;
+
+  > .row {
+    display: flex;
+
+    > .square {
+      width: 80px;
+      height: 80px;
+      outline: 0;
+      border: 1px solid #909090;
+      background-color: #fff;
+      color: cornflowerblue;
+      font-family: monospace;
+      font-size: 50px;
+      &:hover {
+        background-color: #a5ffa5;
+      }
+    }
+  }
+}
+
+
+// Game Info
+//----------------------------------------------
+.game-info {
+  .game-board + & {
+    margin-top: 12px;
+  }
+
+  > .status {
+    margin-bottom: 18px;
+    font-family: monospace;
+    font-size: 18px;
+  }
+
+  > .moves {
+    padding-left: 1.8em;
+    font-size: 14px;
+    line-height: 1.4;
+
+    > li {
+      > a {
+        color: #909090;
+        &:hover {
+          color: #ccc;
+        }
+      }
+    }
+  }
+}

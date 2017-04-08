@@ -1,37 +1,33 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Square from './Square';
 
-class Board extends Component {
-    // NOTE: 注意ポイント
-    // (1) 普通の function 構文では index 値が渡せず、上手くいかなかった。（無限ループに陥った）なので、不思議構文を採用している。要調査。
 
-    renderSquare(i) {
-        return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
-        // (2) ここでは onClick にアロー演算子を使用する。さもなければ無限ループしてしまう。
-        // 2017/03/21 追記: 引数と関係がありそう・・・
-    }
+const Board = (props) => {
+  function renderSquare(i) {
+    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />;
+    // MEMO: 下記でもいける
+    // onClick={props.onClick.bind(null, i)}
+  }
 
-    render() {
-        return (
-            <div className="game-board">
-                <div className="row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
-            </div>
-        );
-    }
-}
+  return (
+    <div className="game-board">
+      <div className="row">
+        {renderSquare(0)}
+        {renderSquare(1)}
+        {renderSquare(2)}
+      </div>
+      <div className="row">
+        {renderSquare(3)}
+        {renderSquare(4)}
+        {renderSquare(5)}
+      </div>
+      <div className="row">
+        {renderSquare(6)}
+        {renderSquare(7)}
+        {renderSquare(8)}
+      </div>
+    </div>
+  );
+};
 
 export default Board;

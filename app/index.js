@@ -5,6 +5,6 @@ import Game from './components/Game';
 import styles from './stylesheets/app.scss';
 
 ReactDOM.render(
-    <Game />,
-    document.getElementById('app')
+  <Game />,
+  document.getElementById('app')
 );
